@@ -3,6 +3,11 @@ sudo: false
 go:
   - "1.5"
 
+env:
+  global:
+    - 'AWS_ACCESS_KEY_ID=AKIAJP3DIYUEHRAW7A6A'
+    - secure: "INDj5AOKacxWOCgqP8CwimbpqYItBXOgTDw5/Idq8sfVdyRtVhoiP6v+9h244/t3JIMppRcTrYYW1/DY1JYOzZqdcdukQ5KxfC0RpIzFuc/LlrAKQx9ubrnXSdW/w2E+Fn6Wj80cJn1ksJJPuFXaG8ksjKHP7eLDteUkjlMr+48NhoTvmlbtSzlvquwaZmGjacWyUgVpjbLdn5n3KrYDMLxQM8byoSHyUeuLNNX6hXTuz1JaSmclmlPH361+ch60JOfEtSD0mGetv+KlCnfWBQf3UhXdeCLQFX64d+PYUfcwibox8VRix6I96CqAbeqRjqlP7y38FufGnDN1iYFvIVnvH4jg//eapO21oPD+tHHkUu8O0SHltHjeibZQcDW6edG74uRqSD1Jg1shFEL1tR2V/y6UsnnmcTF1ruXJM0q58dQ4dSZHf8zxdPezWXaUZAr4B/fTMjSe1vm0qEFJuA3YWLMY2ChxTKOCGFFRjDDk7olmFWf3GrHOazJk9CkMkWPxmz8mGghHALV7UV8QIGJP44WX1oYaEflf723tIQQ063fjPYCf0e3bPrXy9ozjk3Ff0etyyzgBdS0ZEl51cd3PCBn4zFKIzt4TqO95og9gMf6u7/uTquq7r80KpoGLVW3gsI6Qda6Nxy4dd3H4x7HIyxETG21rO6iwXg4x1Cc="
+
 install:
   - 'bundle install'
   - 'pip install --user linkchecker'
@@ -14,6 +19,14 @@ install:
 script:
   - 'make travis-linkchecker'
   - 'make generate'
+
+deploy:
+  provider: 'script'
+  script: 'bundle exec s3_website push --verbose'
+  skip_cleanup: true
+  on:
+    branch: 'master'
+    repo: 'marvinpinto/charlesbot.org'
 
 notifications:
   email: false
