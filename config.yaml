@@ -8,6 +8,7 @@ MetaDataFormat: "yaml"
 params:
   name: "charlesbot"
   description: "Charlesbot is a modular Python bot framework written to take advantage of Slack's Real Time Messaging API"
+  email: "hello@charlesbot.org"
 
   sidebar:
     avatar: "avatar.png"
