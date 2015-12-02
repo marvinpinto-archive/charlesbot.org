@@ -5,4 +5,7 @@ site: "public"
 
 max_age: 86400
 
+cloudfront_distribution_id: "<%= ENV['CLOUDFRONT_DISTRIBUTION_ID'] %>"
+cloudfront_invalidate_root: true
+
 concurrency_level: 5
