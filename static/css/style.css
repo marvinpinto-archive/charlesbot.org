@@ -1,0 +1,32 @@
+.image.avatar img {
+  border-radius: 0%;
+  width: 100%;
+}
+
+.image:before {
+  background: none;
+  border-style: solid;
+  border-color: #a2a2a2;
+  border-width: 0.10em;
+}
+
+.image.thumb:after {
+  content: 'Website';
+  transition: none;
+}
+
+h3 {
+  font-weight: bold;
+}
+
+#header {
+  background-color: #342D3A;
+  background-image: none;
+}
+
+@media screen and (max-width: 980px) {
+  #footer {
+    background-color: #342D3A;
+    background-image: none;
+  }
+}

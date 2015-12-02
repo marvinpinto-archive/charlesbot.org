@@ -1,0 +1,4 @@
+themes/
+public/
+Gemfile.lock
+env_vars
