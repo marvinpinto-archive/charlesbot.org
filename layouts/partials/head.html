@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<!--
+  Strata by HTML5 UP
+  html5up.net | @n33co
+  Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+<head>
+<title>{{ .Title }} &middot; {{ .Site.Title }}</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="author" content="{{ with .Site.Params.name }}{{ . }}{{ end }}">
+<meta name="description" content="{{ with .Site.Params.description }}{{ . }}{{ end }}">
+<meta http-equiv="content-language" content="{{ with .Site.LanguageCode }}{{ . }}{{ end }}" />
+{{ .Hugo.Generator }}
+<link rel="stylesheet" href="/css/main.css" />
+<link rel="stylesheet" href="/css/style.css" />
+
+<!-- Google Analytics -->
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', '{{ getenv "GOOGLE_ANALYTICS_ID" }}', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+<!-- End Google Analytics -->
+
+</head>

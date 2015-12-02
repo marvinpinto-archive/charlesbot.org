@@ -1,0 +1,36 @@
+language: go
+sudo: false
+go:
+  - "1.5"
+
+env:
+  global:
+    - 'AWS_ACCESS_KEY_ID=AKIAJP3DIYUEHRAW7A6A'
+    - secure: "INDj5AOKacxWOCgqP8CwimbpqYItBXOgTDw5/Idq8sfVdyRtVhoiP6v+9h244/t3JIMppRcTrYYW1/DY1JYOzZqdcdukQ5KxfC0RpIzFuc/LlrAKQx9ubrnXSdW/w2E+Fn6Wj80cJn1ksJJPuFXaG8ksjKHP7eLDteUkjlMr+48NhoTvmlbtSzlvquwaZmGjacWyUgVpjbLdn5n3KrYDMLxQM8byoSHyUeuLNNX6hXTuz1JaSmclmlPH361+ch60JOfEtSD0mGetv+KlCnfWBQf3UhXdeCLQFX64d+PYUfcwibox8VRix6I96CqAbeqRjqlP7y38FufGnDN1iYFvIVnvH4jg//eapO21oPD+tHHkUu8O0SHltHjeibZQcDW6edG74uRqSD1Jg1shFEL1tR2V/y6UsnnmcTF1ruXJM0q58dQ4dSZHf8zxdPezWXaUZAr4B/fTMjSe1vm0qEFJuA3YWLMY2ChxTKOCGFFRjDDk7olmFWf3GrHOazJk9CkMkWPxmz8mGghHALV7UV8QIGJP44WX1oYaEflf723tIQQ063fjPYCf0e3bPrXy9ozjk3Ff0etyyzgBdS0ZEl51cd3PCBn4zFKIzt4TqO95og9gMf6u7/uTquq7r80KpoGLVW3gsI6Qda6Nxy4dd3H4x7HIyxETG21rO6iwXg4x1Cc="
+    - secure: "MG7T4P3MWoSLfxH5Xw/XCvGLPrFhVg2VCBtXx0SlTHBpuqEbm/gmBIgV2l/yS1LmC1qCeuiyMYwWUI+aRVo+GptKOju//rG4a+dbbDQkXXHrowxLC8aTivcq8z/I3xL1kUiw5mQSHv/ZXDHfDFfzJZwtB6v1W2m2o5xQZAtiiojO0R+9ChAqyHrpFT2AyfwC9Jm7KMd1ENSLY36QSXIJ2E7wSxoY1aGnZ1+RClvSMJimfn+f9Fmfkk/5QTq62R91bnwt2lbR1cP8BRZrssww77BgMAQ/iPFQF7aGFA+cn+QrG/N7eyl+KNSGxsK5SvCKeXxOTiqmWyZDav1Axhhzib/p6fCUZVGvdkZ+tJJHYTvwrC3yYzAMHoTSaDnqsMLgZ/nrgqOWcGNdQg5uc8214NM6PxI2oBd2BKRMbp2+wazSbROcsEH6JXyUxOW+4mgQLCACtvKGP1Iu1hUZhccQd4DsJVmE/mrtveuSMnR3dL1vbOG8gw7dCuxz104ZU8ctGwv9AzsrKjFnJJ4IFwjlx0U2yRGUrkP28X5dH2pm4YAIfGefnaGLWIAq1Doj16DP20Ebmo3zVk2rLQ3o9PQHW9lY3esad3zAEOxFVIvXC0K661XxDodFl14kjlO7RiiPy06E1r00dGequ5mvgbW0sFkE1XwRl1UChvwQRLjYOEw="
+    - secure: "IfDoj5NrvfJgVdcHJ+e2nnU5TcwRl5apxdtJncYqxEl7zY0qT7N4k6pXEWOuSdHSoahjbDkawatmwemFfPI15e1EHoaaz49K8/f23R1gnLUQUlf0Kxwj9XPCPzR0ibvQqYiptp77EybuRd5K2T1cXUQPWsxYAbzxmB6nzgJRGijFGzD+0ZLNhhEgpqyzmRdNVxkEsLh3/6CKn9GgOGypjbXAHMZ+JAsBc1Da5eI2Ez3esaihjIdclVzcOIiUszelu9DttY0pErB22G0zK9siNiCIg7BhAS0EgcGi8vxuenu0B16lbiAp2O39PCJ3MA8GJSrULggbqofbZjD69CJUv9HBbpxHOcSvGYrtDf3ApjnrP8lnPCJ4zwuhzvKMCd0AQLgjWI/AX8p8TCwVDp8D+3maSyG6c2ZHmKpfp1+6TdIlb5EWMgSD2UXMVuzKig6iAZ8JyIuAkWWj9xY1D6QmFO0yec6PBdExcbLVOdHFxMW2nJX9uewJldIPY3ovC8MiKogfSfhEBzzzYKG+DythQVRMv7FK69EgiF4/RO1nzcMMzsE0GIKRso++d2iKitMHqokqnqxMordzOCbR7XbdKoPihIIxx0oJhV+/w1QdC27hDrJijS8zcFIAERuvXz8vx5qw/8yZkGZ0DD4f3vwGwrvqGYmN1vugK1c2IyyfSUk="
+
+install:
+  - 'bundle install'
+  - 'pip install --user linkchecker'
+  - 'make clean'
+  - 'make themes'
+  - 'make travis-server &'
+  - 'sleep 10'
+
+script:
+  - 'make travis-linkchecker'
+  - 'make generate'
+
+deploy:
+  provider: 'script'
+  script: 'bundle exec s3_website push --verbose'
+  skip_cleanup: true
+  on:
+    branch: 'master'
+    repo: 'marvinpinto/charlesbot.org'
+
+notifications:
+  email: false
+  irc:
+    secure: "YbNlEsQzKnA+8UJMpVOyG6z3rxYqzZIoRGgxv5MPfvQqxSh+koZVgycRtl9/1hyr7Z+IwqEWv97ky+1bU2kxcfKWpEAclK7+tsLsCcxrcw9q9pX9vU7gVV8Ds+MKAL8R0VHTXWBzVboJ3Upt1lCpNSx89YjZ8JwFJnYFfWrAPejogK8IqCPVs1yK3txqyUlJz6QUqJ/uAfg02+6Kq4y7wGMleG7CE1Erl05EE3VvqWoErMaZoWCLmqL1Yq58wheF/F52Jb+vrEK94aM6DV7cDycAQlfZHdwdjI2Wj8Ri+ssvK/g27DPQ7EBwr2wVap4AgWcOBnBtpERZw742X/vDyWNm9yaKo7ag7u2iBQrppg0R4R2cLB+njCKucxv4gfmj6FmEMW6FotIIqAe66lmlHuZAg/lau+59JPVun8qRT4qfJq7u4Nld8DXxNGGor+4ljAyja/n/TXty8h5vFuA4LpAwuB2f2RL4HZC/BZekHd4kXD5ixHcehdJDKr9b0lNshR39cunhKp4xL59MnB7mdhSah9VVh84ohVQvSDhVooOI+4JaZRSXHOCBIYXTKQiGya2O3stIh3ul3uyRM0I+mSC6F+jmgJgP538NnduyJxP4axWGroAgdhQprZgn2Mr4cwDlrfILawn5DTFeNxLFTYuRwxBiRt/MLZi9wJ7rn/w="

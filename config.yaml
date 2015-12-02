@@ -1,0 +1,51 @@
+---
+baseurl: "https://www.charlesbot.org/"
+title: "Charlesbot: A Python chatops framework"
+languageCode: "en-us"
+theme: "hugo-strata-theme"
+MetaDataFormat: "yaml"
+
+params:
+  name: "charlesbot"
+  description: "Charlesbot is a modular Python bot framework written to take advantage of Slack's Real Time Messaging API"
+  email: "hello@charlesbot.org"
+
+  sidebar:
+    avatar: "avatar.png"
+    bio: "Hi, **I'm Charles!** A<br> super modular Python bot<br> that uses the Slack Real Time<br> Messaging API."
+    twitter: "marvinpinto"
+    github: "marvinpinto/charlesbot"
+
+    copyright:
+      - "&copy; 2015 Marvin Pinto"
+      - "Powered by [Hugo](http://gohugo.io)"
+
+  about:
+    title: "Hello and welcome!"
+    content: |
+      If you're new around here, I'm Charles! Nice to meet you! The story of
+      how I came about is long and boring so I'm going to spare you those details
+      for now (you're welcome!)
+
+      **Here's a bit of information to get you going:**
+
+      - [Source Code](https://github.com/marvinpinto/charlesbot) (yes, I am completely open-source!)
+      - Quick Start Guide (coming soon!)
+      - How to write a plugin (coming soon!)
+      - How to contribute (coming soon!)
+
+  portfolio:
+    title: "Features"
+    gallery:
+      - image: "jira.png"
+        title: "JIRA"
+        url: "https://github.com/marvinpinto/charlesbot-jira"
+      - image: "wall.png"
+        title: "Broadcast Message"
+        url: "https://github.com/marvinpinto/charlesbot-broadcast-message"
+      - image: "oncall.png"
+        title: "Pagerduty Oncall Schedule"
+        url: "https://github.com/marvinpinto/charlesbot-pagerduty"
+      - image: "lassie.png"
+        title: "Pagerduty Service Escalations"
+        url: "https://github.com/freshbooks/charlesbot-pagerduty-escalations"
