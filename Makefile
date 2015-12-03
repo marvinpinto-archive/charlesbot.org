@@ -10,8 +10,8 @@ go:
 
 themes: go
 	mkdir -p themes
-	cd themes; git clone https://github.com/digitalcraftsman/hugo-strata-theme.git || true
-	cd themes/hugo-strata-theme; git reset --hard bca3b7b12aebd206dae445f4415c88ee59f215f3
+	cd themes; git clone https://github.com/marvinpinto/hugo-strata-theme.git || true
+	cd themes/hugo-strata-theme; git checkout -f relative-url-references
 
 travis-linkchecker:
 	linkchecker http://127.0.0.1:8080
