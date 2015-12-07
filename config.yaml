@@ -30,9 +30,9 @@ params:
       **Here's a bit of information to get you going:**
 
       - [Source Code](https://github.com/marvinpinto/charlesbot) (yes, I am completely open-source!)
-      - Quick Start Guide (coming soon!)
+      - [Quick Start Guide](https://www.charlesbot.org/docs/installation.html)
       - How to write a plugin (coming soon!)
-      - How to contribute (coming soon!)
+      - [How to contribute](https://www.charlesbot.org/docs/development.html)
 
   portfolio:
     title: "Features"
