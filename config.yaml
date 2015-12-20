@@ -49,3 +49,6 @@ params:
       - image: "lassie.png"
         title: "Pagerduty Service Escalations"
         url: "https://github.com/freshbooks/charlesbot-pagerduty-escalations"
+      - image: "rundeck-lock.png"
+        title: "Rundeck Deployment Locks"
+        url: "https://github.com/marvinpinto/charlesbot-rundeck"
