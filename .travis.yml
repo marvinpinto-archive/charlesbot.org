@@ -22,14 +22,6 @@ script:
   - 'make travis-linkchecker'
   - 'make generate'
 
-deploy:
-  provider: 'script'
-  script: 'bundle exec s3_website push --verbose'
-  skip_cleanup: true
-  on:
-    branch: 'master'
-    repo: 'marvinpinto/charlesbot.org'
-
 notifications:
   email: false
   irc:
